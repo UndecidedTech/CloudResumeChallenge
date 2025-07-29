@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UndecidedTech - Resume</title>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="resume-page">
+      <span id="visits">
+        Visitor Counter: 
+      </span>
+      <header>
+        <h1 class="name">Brooon M. Pooors</h1>
+        <p class="blurred-info">email@example.com | (555)-555-5555 | City, State, Country</p>
+        <p><a href="#" class="blurred-info">linkedin.com/in/your-profile</a></p>
+      </header>
+
+      <section id="education">
+        <h2>EDUCATION</h2>
+        <p><strong>University of Cincinnati</strong>, Cincinnati, OH — May 2021</p>
+        <p>Bachelor of Science in Information Technology – Cybersecurity</p>
+        <p>GPA: 3.383 / 4.00</p>
+      </section>
+
+      <section id="skills">
+        <h2>TECHNICAL SKILLS</h2>
+        <p><strong>Programming Languages:</strong> Bash, PowerShell, SQL, JavaScript/TypeScript, HTML/CSS, Python</p>
+        <p><strong>Software:</strong> SQL Server, Oracle, Wireshark, Git, Jest, VMWare/Virtual Box, Visio, Jira, Postman, AWS, Vue.js, React, Knime, Django, Jenkins, Nginx, Styled Components, MaterialUI, MJML</p>
+        <p><strong>Operating Systems:</strong> Linux (Red hat, Debian, Kali), Mac OS, and Windows Server/OS</p>
+      </section>
+
+      <section id="experience">
+        <h2>EXPERIENCE</h2>
+        <div>
+          <h3>Divisions Maintenance Group | Cincinnati, Ohio</h3>
+          <p><em>Software Development Engineer 1</em>, Feb 2022 - July 2024</p>
+          <ul>
+            <li>Collaborated closely with the Product/Marketing team to design and develop the corporate website, resulting in an enhanced brand representation.</li>
+            <li>Spearheaded the implementation of communication campaigns by creating a streamlined workflow for all notifications (email and sms).</li>
+            <li>Developed frontend components for a variety of applications crucial to our provider experience ensuring intuitive usability and efficient data presentation.</li>
+            <li>Established testing framework for validating frontend integration to enable seamless deployment and delivery.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Drees Homes | Cincinnati, Ohio</h3>
+          <p><em>Full stack Developer</em>, May 2021 - Sept 2021</p>
+          <ul>
+            <li>Designed, built, and tested new applications for client oriented solutions using the Vue frontend development framework.</li>
+            <li>Created AWS lambda endpoints using a combination of Node.js and S3 to handle image uploads for the customer facing site.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Infolynx Eft. | Teaneck, New Jersey</h3>
+          <p><em>Junior Full stack Developer</em>, May 2019 - Aug 2020</p>
+          <ul>
+            <li>Implemented custom flexible JavaScript components to optimize frontend page generation workflow.</li>
+            <li>Utilized AWS stack to write endpoints using a combination of API gateway, Lambda, Node.js, and MongoDB.</li>
+            <li>Enacted and led Agile project management using Jira and Confluence.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>84.51° -- The Kroger Company | Cincinnati, Ohio</h3>
+          <p><em>Windows/Linux & Database Admin TDO Co-op</em>, May 2017 - Aug 2018</p>
+          <ul>
+            <li>Supported troubleshooting of database issues for Oracle Exadata, MS SQL servers, and a variety of NoSQL alternative databases.</li>
+            <li>Oversaw administration of Linux servers, including support for file restores, file/server access management, troubleshooting with customers, responding to alerts, installing software, and tracking storage and hardware utilization.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>PROJECTS</h2>
+        <div>
+          <h3>Hotswaps.io (2021-2022)</h3>
+          <p><em>Founder</em></p>
+          <ul>
+            <li>Co-founder and technical lead for the eCommerce website, hotswaps.io, built with React, Node.js, PostgreSQL, on AWS, using Paypal for Marketplace API.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <script>
+    const visitSpan = document.getElementById("visits")
+
+    const res = fetch("https://d35vwndxu4.execute-api.us-east-1.amazonaws.com/CloudResumeV1/count")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("API gateway failed dude");
+      }
+
+      //parse res
+      return response.json()
+    })
+    .then(data => {
+      console.log(data);
+      visitSpan.innerHTML = "Visitor Counter: " + data.count
+    })
+    .catch(error => {
+      console.error("There was an issue with this fetch: ", error)
+    })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+name: CI-Frontend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'site/**'
+
+  pull_request:
+    branches:
+      - main
+

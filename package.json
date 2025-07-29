@@ -1,0 +1,32 @@
+{
+  "name": "cloudresumebackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UndecidedTech/CloudResumeBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/UndecidedTech/CloudResumeBackend/issues"
+  },
+  "homepage": "https://github.com/UndecidedTech/CloudResumeBackend#readme",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.846.0",
+    "@aws-sdk/lib-dynamodb": "^3.846.0"
+  },
+  "devDependencies": {
+    "aws-sdk-client-mock": "^4.1.0",
+    "jest": "^30.0.4"
+  },
+  "jest": {
+    "transform": {}
+  }
+}

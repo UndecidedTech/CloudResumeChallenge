@@ -1,0 +1,23 @@
+# Local Terraform directories and files
+.terraform/
+.terraform.lock.hcl
+
+# Local state files
+*.tfstate
+*.tfstate.backup
+
+# Local variable definition files
+*.tfvars
+
+# Crash log files
+crash.log
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Node ""Stuff""
+node_modules/
+
