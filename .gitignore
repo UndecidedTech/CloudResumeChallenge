@@ -7,7 +7,7 @@
 *.tfstate.backup
 
 # Local variable definition files
-*.tfvars
+# *.tfvars
 
 # Crash log files
 crash.log
