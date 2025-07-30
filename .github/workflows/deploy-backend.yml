@@ -56,7 +56,7 @@ jobs:
       run: terraform init
 
     - name: Terraform Plan
-      run: terraform plan -input=false -var='aws_region=us-east-2' -var='common_tags={ Project = "CloudResume", Environment = "Prod" }' -var='naming_prefix=cloud-resume'
+      run: terraform plan -input=false
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false -var='aws_region=us-east-2' -var='common_tags={ Project = "CloudResume", Environment = "Prod" }' -var='naming_prefix=cloud-resume'
+      run: terraform apply -auto-approve -input=false
