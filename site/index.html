@@ -95,6 +95,7 @@
       return response.json()
     })
     .then(data => {
+      console.log("for my own viewing")
       visitSpan.innerHTML = "Visitor Counter: " + data.count
     })
     .catch(error => {

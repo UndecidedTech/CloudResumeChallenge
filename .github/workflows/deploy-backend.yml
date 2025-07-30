@@ -1,13 +1,12 @@
-name: CI-Backend
+name: Deploy Backend
 
 on:
   push:
     branches:
       - main
     paths:
-      - '/api/**'
-      - '**.tf'
-
+      - 'api/**'
+      - 'terraform/backend/**'
 
 jobs:
   test:
@@ -27,3 +26,37 @@ jobs:
 
     - name: Run Tests
       run: npm test
+
+  terraform:
+    name: 'Terraform Apply'
+    runs-on: ubuntu-latest
+    needs: test # Ensure tests pass before deploying
+    environment: production # Optional: if you have a GitHub environment for production
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./terraform/backend
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2 # Use us-east-2 as per our recent changes
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Plan
+      run: terraform plan -input=false -var='aws_region=us-east-2' -var='common_tags={ Project = "CloudResume", Environment = "Prod" }' -var='naming_prefix=cloud-resume'
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false -var='aws_region=us-east-2' -var='common_tags={ Project = "CloudResume", Environment = "Prod" }' -var='naming_prefix=cloud-resume'
